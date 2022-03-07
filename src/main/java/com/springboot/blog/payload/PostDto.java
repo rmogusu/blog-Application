@@ -30,6 +30,7 @@ public class PostDto {
     // post content should not be null or empty
 //    @ApiModelProperty(value = "Blog post conent")
     @NotEmpty
+    @Size(min = 10, message = "Content description should have at least 5 characters")
     private String content;
 
 //    @ApiModelProperty(value = "Blog post comments")
