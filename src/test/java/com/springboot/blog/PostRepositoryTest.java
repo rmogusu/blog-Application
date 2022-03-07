@@ -2,32 +2,30 @@ package com.springboot.blog;
 
 import com.springboot.blog.entity.Post;
 import com.springboot.blog.repository.PostRepository;
-import javafx.geometry.Pos;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
 
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SpringbootBlogRestApiApplication.class)
 public class PostRepositoryTest {
+
 
     @Autowired
     PostRepository postRepository;
 
     // JUnit test for savePost
     @Test
-    @Order(1)
-    @Rollback(value = false)
+    @DirtiesContext
     public void savePostTest() {
         Post post = Post.builder()
                 .title("my name is Rose")
@@ -38,9 +36,10 @@ public class PostRepositoryTest {
         postRepository.save(post);
         Assertions.assertThat(post.getId()).isGreaterThan(0);
     }
-//Junit test to get post by id
+
+   //Junit test to get post by id
     @Test
-    @Order(2)
+    @DirtiesContext
     public void getPostTest() {
         Post post = postRepository.findById(1L).get();
 
@@ -49,7 +48,7 @@ public class PostRepositoryTest {
     }
   //junit to get all posts
     @Test
-    @Order(3)
+    @DirtiesContext
     public void getListOfPostTest() {
 
         List<Post> post = postRepository.findAll();
@@ -57,13 +56,13 @@ public class PostRepositoryTest {
         Assertions.assertThat(post.size()).isGreaterThan(0);
 
     }
-//junit to update all post by id
+  //junit to update all post by id
     @Test
-    @Order(4)
     @Rollback(value = false)
+    @DirtiesContext
     public void updatePostTest() {
 
-        Post post = postRepository.findById(1L).get();
+        Post post = postRepository.findById(2L).get();
 
         post.setTitle("Stop all that you are doing");
 
@@ -75,7 +74,7 @@ public class PostRepositoryTest {
     //junit to delete post by id
     @Test
     @Order(5)
-    @Rollback(value = false)
+    @DirtiesContext
     public void deletePostTest(){
 
         Post post = postRepository.findById(1L).get();
