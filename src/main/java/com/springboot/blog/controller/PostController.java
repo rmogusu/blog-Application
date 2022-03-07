@@ -31,7 +31,7 @@ public class PostController {
 
     @ApiOperation(value = "Get All Posts REST API")
     // get all posts rest api
-    @GetMapping("/api/v1/posts")
+    @GetMapping("/")
     public PostResponse getAllPosts(
             @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
