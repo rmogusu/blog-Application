@@ -2,9 +2,13 @@ package com.springboot.blog.payload;
 
 import lombok.Data;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 @Data
 public class CommentDto {
-//    @ApiModelProperty(value = "Comment id")
+    //    @ApiModelProperty(value = "Comment id")
     private long id;
     // name should not be null or empty
 //    @ApiModelProperty(value = "Comment name")
