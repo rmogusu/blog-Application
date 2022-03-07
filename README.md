@@ -39,6 +39,11 @@ After extracting the files, run
 
 
 ##BDD(Behaviour Driven Development)
+* User can create a posts and add its comments
+* User can update the posts and comments
+* User can get all posts and all comments
+* User can get Post by id and comments by id
+* User can delete post and its comments
 
 ## Licence
 ### MIT License &copy 2019 Rose Copyright (c) [2019][G-Search]
