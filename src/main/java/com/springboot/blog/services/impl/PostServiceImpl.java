@@ -72,36 +72,36 @@ public class PostServiceImpl implements PostService {
         return mapToDTO(post);
     }
 
-//    @Override
-//    public PostDto updatePost(PostDto postDto, long id) {
-//        // get post by id from the database
-//        Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
-//
-//        post.setTitle(postDto.getTitle());
-//        post.setDescription(postDto.getDescription());
-//        post.setContent(postDto.getContent());
-//
-//        Post updatedPost = postRepository.save(post);
-//        return mapToDTO(updatedPost);
-//    }
-//
-//    @Override
-//    public void deletePostById(long id) {
-//        // get post by id from the database
-//        Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
-//        postRepository.delete(post);
-//    }
-//
-//    // convert Entity into DTO
-//    private PostDto mapToDTO(Post post){
-//        PostDto postDto = mapper.map(post, PostDto.class);
-////        PostDto postDto = new PostDto();
-////        postDto.setId(post.getId());
-////        postDto.setTitle(post.getTitle());
-////        postDto.setDescription(post.getDescription());
-////        postDto.setContent(post.getContent());
-//        return postDto;
-//    }
+    @Override
+    public PostDto updatePost(PostDto postDto, long id) {
+        // get post by id from the database
+        Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
+
+        post.setTitle(postDto.getTitle());
+        post.setDescription(postDto.getDescription());
+        post.setContent(postDto.getContent());
+
+        Post updatedPost = postRepository.save(post);
+        return mapToDTO(updatedPost);
+    }
+
+    @Override
+    public void deletePostById(long id) {
+        // get post by id from the database
+        Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
+        postRepository.delete(post);
+    }
+
+    // convert Entity into DTO
+    private PostDto mapToDTO(Post post){
+        PostDto postDto = mapper.map(post, PostDto.class);
+//        PostDto postDto = new PostDto();
+//        postDto.setId(post.getId());
+//        postDto.setTitle(post.getTitle());
+//        postDto.setDescription(post.getDescription());
+//        postDto.setContent(post.getContent());
+        return postDto;
+    }
 
     // convert DTO to entity
     private Post mapToEntity(PostDto postDto){
