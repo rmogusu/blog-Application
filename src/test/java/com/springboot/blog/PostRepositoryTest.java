@@ -12,7 +12,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -25,7 +24,7 @@ public class PostRepositoryTest {
     // JUnit test for savePost
     @Test
     @Order(1)
-    @Rollback(value = false)
+//    @Rollback(value = false)
     public void savePostTest(){
         Post post = Post.builder()
                 .title("my name is Rose")
@@ -35,6 +34,23 @@ public class PostRepositoryTest {
 
         postRepository.save(post);
         Assertions.assertThat(post.getId()).isGreaterThan(0);
+    }
+    @Test
+    @Order(2)
+    public void getPostTest(){
+        Post post = postRepository.findById(1L).get();
+
+        Assertions.assertThat(post.getId()).isEqualTo(1L);
+
+    }
+    @Test
+    @Order(3)
+    public void getListOfEmployeesTest(){
+
+        List<Post> post = employeeRepository.findAll();
+
+        Assertions.assertThat(employees.size()).isGreaterThan(0);
+
     }
 
 }
