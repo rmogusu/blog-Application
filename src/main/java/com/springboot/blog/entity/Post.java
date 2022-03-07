@@ -15,8 +15,8 @@ import javax.persistence.*;
         name = "posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
 )
 public class Post {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title", nullable = false)
