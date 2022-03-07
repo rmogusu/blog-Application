@@ -6,12 +6,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.Rollback;
+
+import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -24,7 +25,7 @@ public class PostRepositoryTest {
     // JUnit test for savePost
     @Test
     @Order(1)
-//    @Rollback(value = false)
+    @Rollback(value = false)
     public void savePostTest(){
         Post post = Post.builder()
                 .title("my name is Rose")
@@ -45,11 +46,11 @@ public class PostRepositoryTest {
     }
     @Test
     @Order(3)
-    public void getListOfEmployeesTest(){
+    public void getListOfPostTest(){
 
-        List<Post> post = employeeRepository.findAll();
+        List<Post> post = postRepository.findAll();
 
-        Assertions.assertThat(employees.size()).isGreaterThan(0);
+        Assertions.assertThat(post.size()).isGreaterThan(0);
 
     }
 
