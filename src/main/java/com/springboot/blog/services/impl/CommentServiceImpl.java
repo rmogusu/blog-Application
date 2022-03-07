@@ -1,12 +1,22 @@
 package com.springboot.blog.services.impl;
 
+import com.springboot.blog.entity.Comment;
+import com.springboot.blog.entity.Post;
+import com.springboot.blog.exception.BlogAPIException;
+import com.springboot.blog.exception.ResourceNotFoundException;
+import com.springboot.blog.payload.CommentDto;
+import com.springboot.blog.repository.CommentRepository;
 import com.springboot.blog.repository.PostRepository;
 import com.springboot.blog.services.CommentService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-public class CommentServiceImp implements CommentService {
+public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
     private PostRepository postRepository;
     private ModelMapper mapper;
@@ -15,10 +25,8 @@ public class CommentServiceImp implements CommentService {
         this.postRepository = postRepository;
         this.mapper = mapper;
     }
-
     @Override
     public CommentDto createComment(long postId, CommentDto commentDto) {
-
         Comment comment = mapToEntity(commentDto);
 
         // retrieve post entity by id
@@ -119,4 +127,6 @@ public class CommentServiceImp implements CommentService {
 //        comment.setBody(commentDto.getBody());
         return  comment;
     }
+
+
 }
