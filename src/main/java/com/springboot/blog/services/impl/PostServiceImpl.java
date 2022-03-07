@@ -100,7 +100,7 @@ public class PostServiceImpl implements PostService {
 //        postDto.setTitle(post.getTitle());
 //        postDto.setDescription(post.getDescription());
 //        postDto.setContent(post.getContent());
-//        return postDto;
+        return postDto;
     }
 
     // convert DTO to entity
