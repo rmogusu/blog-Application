@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data
+//@Api(value = "Comment model information")
 public class CommentDto {
     //    @ApiModelProperty(value = "Comment id")
     private long id;
