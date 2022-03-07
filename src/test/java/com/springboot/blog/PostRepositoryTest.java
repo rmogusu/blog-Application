@@ -2,6 +2,7 @@ package com.springboot.blog;
 
 import com.springboot.blog.entity.Post;
 import com.springboot.blog.repository.PostRepository;
+import javafx.geometry.Pos;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class PostRepositoryTest {
     @Test
     @Order(1)
     @Rollback(value = false)
-    public void savePostTest(){
+    public void savePostTest() {
         Post post = Post.builder()
                 .title("my name is Rose")
                 .description("I like jumping in the morning")
@@ -36,22 +37,40 @@ public class PostRepositoryTest {
         postRepository.save(post);
         Assertions.assertThat(post.getId()).isGreaterThan(0);
     }
+
     @Test
     @Order(2)
-    public void getPostTest(){
+    public void getPostTest() {
         Post post = postRepository.findById(1L).get();
 
         Assertions.assertThat(post.getId()).isEqualTo(1L);
 
     }
+
     @Test
     @Order(3)
-    public void getListOfPostTest(){
+    public void getListOfPostTest() {
 
         List<Post> post = postRepository.findAll();
 
         Assertions.assertThat(post.size()).isGreaterThan(0);
 
     }
+
+    @Test
+    @Order(4)
+    @Rollback(value = false)
+    public void updatePostTest() {
+
+        Post post = postRepository.findById(1L).get();
+
+        post.setTitle("Stop all that you are doing");
+
+        Post postUpdated = postRepository.save(post);
+
+        Assertions.assertThat(postUpdated.getTitle()).isEqualTo("ram@gmail.com");
+
+    }
+
 
 }
