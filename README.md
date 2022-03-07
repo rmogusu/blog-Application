@@ -5,7 +5,7 @@
 ### Rose Mogusu
 
 ## Description
-### 
+### Blog app is where users create posts and add their comments,the application is developed using spring boot mvc and deployed in heroku
 
 ## Installations
 * Java JDk
@@ -38,7 +38,7 @@ After extracting the files, run
 * Postgres
 
 
-##BDD(Behaviour Driven Development)
+## BDD(Behaviour Driven Development)
 * User can create a posts and add its comments
 * User can update the posts and comments
 * User can get all posts and all comments
@@ -46,7 +46,7 @@ After extracting the files, run
 * User can delete post and its comments
 
 ## Licence
-### MIT License &copy 2019 Rose Copyright (c) [2019][G-Search]
+### MIT License &copy 2019 Rose Copyright (c) [2022][BlogApplication]
 
 ### Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
